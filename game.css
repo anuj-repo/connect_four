@@ -1,0 +1,50 @@
+.center {
+    margin: 60px;
+}
+
+.cell {
+    padding: 5px;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    border-style: ridge;
+    color: transparent;
+}
+
+.place {
+    border-width: 0 0 10px 0;
+}
+
+.place:hover {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #000;
+    border-radius: 100px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.shapeborder {
+    border: 1px solid black;
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #000;
+    border-radius: 100px;
+    display: block;
+    position: relative;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.inrow {
+    display: inline-block;
+}

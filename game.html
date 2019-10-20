@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connect 4</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="game.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="connectfour" class="container-fluid">
+        <div class="row center">
+            <div class="col-md-2" data-bind="player1">
+                <h3 data-bind="text: player1.name"></h3>
+                <div data-bind="foreach: new Array(player1.disks())">
+                    <!-- ko if: (($index())%3===0) -->
+                    <br>
+                    <!-- /ko -->
+                    <span class="circle red inrow"></span>
+                </div>
+            </div>
+            <div class="col-md-7">
+
+                <!-- ko if: (gameOver() == 0) -->
+                <div data-bind="foreach: place">
+                    <div class="col-md-1 cell place" data-bind="click: $root.placedisk,css:$root.activeplayer().color">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko ifnot: (gameOver() == 0) -->
+                <button type="button" class="btn btn-info btn-lg btn-block" data-bind="click: replay">Play Again</button>
+                <!-- /ko -->
+
+                <div class="table table-striped">
+                    <div data-bind="foreach: board">
+                        <!-- ko if: (($index())%7===0) -->
+                        <br>
+                        <!-- /ko -->
+                        <div class="col-md-1 cell">
+                            <span class="circle" data-bind="text:$data, css: {red: ($data == 'red'), yellow: ($data == 'yellow')}"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2" data-bind="player2">
+                <h3 data-bind="text: player2.name"></h3>
+                <div data-bind="foreach: new Array(player2.disks())">
+                    <!-- ko if: (($index())%3===0) -->
+                    <br>
+                    <!-- /ko -->
+                    <span class="circle yellow inrow"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-bind="text: lastTurn()"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" data-bind="text: message">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+<script src="game.js"></script>
+
+</html>
